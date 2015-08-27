@@ -249,7 +249,8 @@ public class TagView extends RelativeLayout {
 				tagParams.addRule(RelativeLayout.ALIGN_TOP, index_header);
 				//not header of the line
 				if (listIndex != index_header) {
-					tagParams.addRule(RelativeLayout.RIGHT_OF, listIndex - 1);
+					tagParams.addRule(RelativeLayout.END_OF, listIndex - 1);
+					tagParams.rightMargin = tagMargin;
 					tagParams.leftMargin = tagMargin;
 					total += tagMargin;
 					if (tag_pre!=null && tag_pre.tagTextSize < tag.tagTextSize) {
