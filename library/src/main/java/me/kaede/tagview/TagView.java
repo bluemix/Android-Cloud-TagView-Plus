@@ -59,6 +59,7 @@ public class TagView extends RelativeLayout {
 	int textPaddingRight;
 	int textPaddingTop;
 	int texPaddingBottom;
+    	Typeface tagTypeface;
 
 
 	/**
@@ -122,6 +123,8 @@ public class TagView extends RelativeLayout {
 		this.textPaddingRight = (int) typeArray.getDimension(R.styleable.TagView_textPaddingRight, Utils.dpToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_RIGHT));
 		this.textPaddingTop = (int) typeArray.getDimension(R.styleable.TagView_textPaddingTop, Utils.dpToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_TOP));
 		this.texPaddingBottom = (int) typeArray.getDimension(R.styleable.TagView_textPaddingBottom, Utils.dpToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_BOTTOM));
+		tagTypeface = Typeface.create("sans-serif", Typeface.BOLD);
+
 		typeArray.recycle();
 	}
 
@@ -185,6 +188,7 @@ public class TagView extends RelativeLayout {
 			// tag text
 			TextView tagView = (TextView) tagLayout.findViewById(R.id.tv_tag_item_contain);
 			tagView.setText(tag.text);
+			tagView.setTypeface(tagTypeface);
 			//tagView.setPadding(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
 			LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tagView.getLayoutParams();
 			params.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
@@ -289,6 +293,15 @@ public class TagView extends RelativeLayout {
 
 	//----------------- public methods  -----------------//
 
+    /**
+     * Set the typeface of the tabs
+     *
+     * @param typeface
+     */
+    public void setTagTypeface(Typeface typeface) {
+        tagTypeface = typeface;
+    }
+    
 	/**
 	 * @param tag
 	 */
